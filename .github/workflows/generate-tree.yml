@@ -1,0 +1,57 @@
+name: Generate Tree and Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'visuals/**'
+      - 'scripts/**'
+      - '.github/workflows/generate-tree.yml'
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 저장소 다운로드
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # 2. Python 환경 설정
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      # 3. 트리 JSON 생성
+      - name: Generate tree.json
+        run: python scripts/generate_tree.py
+
+      # 4. GitHub Pages 설정
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # 5. 배포 파일 업로드
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      # 6. GitHub Pages 배포
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
