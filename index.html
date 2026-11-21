@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="개발 개념과 로직을 시각화하는 개인 기술 랩">
+  <title>Dev Visual Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#/" aria-label="Dev Visual Lab 홈">
+        <span class="brand-mark">V<span>.</span></span>
+        <span><strong>DEV VISUAL</strong><small>LABORATORY</small></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <div class="workspace-card">
+        <span class="workspace-icon">⌘</span>
+        <span><strong>My Playground</strong><small>개발 실험실</small></span>
+        <span class="status-dot"></span>
+      </div>
+      <div class="tree-heading">
+        <span class="sidebar-label">EXPLORER</span>
+        <button class="icon-button" id="expandAll" title="모두 펼치기" aria-label="모두 펼치기">＋</button>
+      </div>
+      <nav id="treeNav" class="tree-nav" aria-label="시각화 항목"></nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card">
+          <span class="tip-icon">✳</span>
+          <strong>작은 실험, 큰 이해</strong>
+          <p>복잡한 개념을 직접 보고 탐색해 보세요.</p>
+        </div>
+        <div class="sidebar-footer"><span class="status-dot"></span> ALL SYSTEMS READY <span>v1.0</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumbs" id="breadcrumbs"><span>Workspace</span><b>/</b><strong>Overview</strong></div>
+        <div class="top-actions">
+          <span class="top-pill"><i></i> GitHub Pages Ready</span>
+          <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </header>
+
+      <section id="homeView" class="view home-view">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> PERSONAL DEVELOPER SPACE</div>
+            <h1>Explore the logic.<br><em>See how it works.</em></h1>
+            <p>개발 과정에서 만나는 다양한 개념과 백엔드 로직을<br class="desktop-only"> 시각적으로 정리하고 직접 탐색하는 공간입니다.</p>
+            <div class="hero-meta"><span>↳ VISUALIZE</span><span>↳ EXPERIMENT</span><span>↳ UNDERSTAND</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="core"><span>V</span><i></i></div>
+            <div class="orbit-node node-a">JS</div><div class="orbit-node node-b">API</div><div class="orbit-node node-c">DB</div>
+            <div class="art-caption">LOGIC / SYSTEM / FLOW</div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div><div class="eyebrow muted">BROWSE COLLECTION</div><h2>시각화 라이브러리</h2><p>왼쪽 탐색기에서 원하는 항목을 선택하세요.</p></div>
+          <div class="item-count"><strong id="itemCount">00</strong><span>VISUALS</span></div>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+        <div class="home-bottom"><span>BUILT FOR CURIOUS MINDS</span><span>SCROLL TO EXPLORE ↓</span></div>
+      </section>
+
+      <section id="detailView" class="view detail-view" hidden>
+        <div class="detail-topline"><button id="backHome" class="back-button">← 전체 항목</button><span class="detail-category" id="detailCategory"></span></div>
+        <div class="detail-heading"><div class="eyebrow muted">VISUALIZATION / <span id="detailIndex">01</span></div><h1 id="detailTitle"></h1><p id="detailDescription"></p></div>
+        <div class="visual-card">
+          <div class="visual-card-head"><div><span class="live-dot"></span><strong>INTERACTIVE CANVAS</strong></div><span id="visualType">FLOW DIAGRAM</span></div>
+          <div id="visualContent" class="visual-content"></div>
+        </div>
+        <div class="detail-info-grid">
+          <article class="info-panel"><span class="panel-kicker">OVERVIEW</span><h3>핵심 개념</h3><p id="detailOverview"></p></article>
+          <article class="info-panel"><span class="panel-kicker">HOW TO EXPLORE</span><h3>사용 방법</h3><p id="detailGuide"></p></article>
+        </div>
+        <div class="detail-pagination"><button id="prevItem">← 이전 항목</button><button id="nextItem">다음 항목 →</button></div>
+      </section>
+      <footer class="main-footer"><span>© 2026 DEV VISUAL LAB</span><span>MADE TO MAKE THINGS CLEAR.</span></footer>
+    </main>
+  </div>
+  <script src="./js/app.js"></script>
+</body>
+</html>
